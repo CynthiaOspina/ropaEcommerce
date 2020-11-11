@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% include "_messages.html" %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h2 class="text-center bg-info p-2">Añadir Producto</h2>
+                {% from "_formhelpers.html" import render_field %}
+                <form action="/addproduct" method="POST" enctype="multipart/form-data">
+                    {{ render_field(form.name, class="form-control", placeholder="Añadir nombre de producto") }}
+                    {{ render_field(form.price, class="form-control", placeholder="Añadir precio de producto") }}
+                    {{ render_field(form.discount, class="form-control", placeholder="Añadir descuento de producto") }}
+                    {{ render_field(form.stock, class="form-control", placeholder="Añadir stock de producto") }}
+                    {{ render_field(form.color, class="form-control", placeholder="Añadir colores del producto") }}
+                    {{ render_field(form.description, class="form-control", placeholder="Añadir descripcion de producto", rows="6") }}
+
+                    <label for="brand">Añadir Marca</label>
+                    <select name="brand" id="brand" class="form-control" required>
+                        <option value="">Selecciona Marca</option>
+                        {% for brand in brands %}
+                        <option value="{{ brand.id }}">{{ brand.name}}</option>
+                        {% endfor %}
+                    </select>
+
+                    <label for="category">Añadir Categoria</label>
+                    <select name="category" id="category" class="form-control" required>
+                        <option value="">Añadir Categoria</option>
+                        {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">{{ render_field(form.image_1, class="form-control") }}</div>
+                            <div class="col-md-4">{{ render_field(form.image_2, class="form-control") }}</div>
+                            <div class="col-md-4">{{ render_field(form.image_3, class="form-control") }}</div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-info mt-4"><b>Añadir Producto</b></button>
+
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+
+
+{% endblock content %}
