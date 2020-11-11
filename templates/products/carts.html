@@ -61,7 +61,7 @@
                     {% endfor %}
                     <tr>
                         <td></td>
-                        <td><a href="/" class="btn btn-success"><b>Pagar</b></a></td>
+                        <td><a href="{{ url_for('get_order') }}" class="btn btn-success"><b>Pagar</b></a></td>
                         <td colspan="3"><h4>Impuesto: S/. {{ tax }}</h4></td>
                         <td colspan="4"><h4>Total: S/. {{ grandtotal }}</h4></td>
                         <td><a href="{{ url_for('empty_cart') }}" class="btn btn-danger btn-sm float-rigth mr-4"><b>Vaciar Carrito</b></a></td>

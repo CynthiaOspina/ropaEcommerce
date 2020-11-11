@@ -5,7 +5,6 @@ from .models import Registro, OrdenCliente
 from flask_login import login_required, current_user, logout_user, login_user
 import secrets, os
 
-
 @app.route('/cliente/registro', methods=['GET','POST'])
 def registro_cliente():
     form = RegistroCliente()
@@ -43,14 +42,16 @@ def cliente_logout():
 @login_required
 def get_order():
     if current_user.is_authenticated:
-        customer_id = current_user.id
+        cliente_id = current_user.id
         factura = secrets.token_hex(5)
         try:
-            order = OrdenCliente(factura=factura, customer_id=customer_id, orden=session['Shoppingcart'])
+            order = OrdenCliente(factura=factura, cliente_id=cliente_id, orden=session['Shoppingcart'])
             db.session.add(order)
+            db.session.commit()
+            session.pop('Shoppingcart')
             flash('Tu orden ha sido creada', 'success')
             return redirect(url_for('home'))
         except Exception as e:
             print(e)
             flash('Error durante la generación de su orden', 'danger')
-            redirect(url_for('getCart'))
+            return redirect(url_for('getCart'))
