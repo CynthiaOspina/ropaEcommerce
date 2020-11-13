@@ -50,8 +50,28 @@ def get_order():
             db.session.commit()
             session.pop('Shoppingcart')
             flash('Tu orden ha sido creada', 'success')
-            return redirect(url_for('home'))
+            return redirect(url_for('ordenes', factura=factura))
         except Exception as e:
             print(e)
             flash('Error durante la generación de su orden', 'danger')
             return redirect(url_for('getCart'))
+
+@app.route('/orden/<factura>')
+@login_required
+def ordenes(factura):
+    if current_user.is_authenticated:
+        grandTotal = 0
+        subTotal = 0
+        cliente_id = current_user.id
+        cliente = Registro.query.filter_by(id=cliente_id).first()
+        ordenes = OrdenCliente.query.filter_by(cliente_id = cliente_id).order_by(OrdenCliente.id.desc()).first()
+        for _key, product in ordenes.orden.items():
+            descuento = (product['discount']/100 * float(product['price']))
+            subTotal += float(product['price']) * int(product['quantity'])
+            subTotal -= descuento
+            tax = ("%.2f" % (.18 * float(subTotal)))
+            grandTotal = float("%.2f" % (1.18 * subTotal))
+
+    else:
+        return redirect(url_for('customerLogin'))
+    return render_template('cliente/orden.html', factura = factura, tax=tax, subTotal=subTotal, grandTotal=grandTotal, cliente=cliente, ordenes=ordenes)

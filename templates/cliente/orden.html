@@ -1,0 +1,76 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+{% include "navbar.html" %}
+
+<p></p>
+
+<div class="container mt-4">
+    {% include '_messages.html' %}
+    <div class="row">
+        <div class="col-md-12">
+            Factura : {{ ordenes.factura }}
+            <br>
+            Status : {{ ordenes.status }}
+            <br>
+            Nombre Cliente : {{ cliente.name }}
+            <br>
+            Correo de Cliente  : {{ cliente.email }}
+            <p></p>
+            <table class="table table-sm">
+                <thead>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Color</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Descuento</th>
+                    <th>Subtotal</th>
+                </thead>
+                <tbody>
+                    {% for key, product in ordenes.orden.items() %}
+                        {% set price = product.price|float %}
+
+                        {% set discount = "%0.2f"|format((product.discount/100) * price|float ) %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ product.name }}</td>
+                    <form action="{{ url_for('updatecart', code=key) }}" method="POST">
+                        <td>
+                            {{ product.color|capitalize }}
+                        </td>
+                        <td>S/. {{ product.price }}</td>
+                        <td>{{product.quantity}}</td>
+                        {% if product.discount > 0 %}
+                        <td>{{ product.discount }}% &nbsp; es {{ discount }}</td>
+                        {% else %}
+                        <td></td>
+                        {% endif %}
+
+                        {% set subtotal = product.quantity|int * price|float %}
+                        <td>{{ "%0.2f"|format((subTotal|float) - discount|float) }}</td>
+
+                    </form>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+            </table>
+                <table class="table table-sm">
+                    <tr>
+                        <td><a href="{{ url_for('get_order') }}" class="btn btn-success"><b>Check out</b></a></td>
+                        <td><h4>Impuesto: S/. {{ tax }}</h4></td>
+                        <td><h4>Total: S/. {{ grandTotal }}</h4></td>
+                        <td><a href="#" class="btn btn-danger btn-sm float-rigth mr-4"><b>Obtener PDF</b></a></td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}
+
+{{ session['Shoppingcart'] }}
