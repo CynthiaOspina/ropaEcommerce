@@ -47,6 +47,7 @@ class OrdenCliente(db.Model):
     status = db.Column(db.String(20), default='Pendiente', nullable=False)
     cliente_id = db.Column(db.Integer, unique=False, nullable=False)
     fecha_creacion = db.Column(db.DateTime, default=datetime.now(), nullable=False)
+    monto=db.Column(db.Float, default=0, nullable=True)
     orden = db.Column(JsonEcodeDict)
 
     def __repr__(self):
