@@ -45,12 +45,13 @@ def get_order():
         cliente_id = current_user.id
         factura = secrets.token_hex(5)
         try:
-            order = OrdenCliente(factura=factura, cliente_id=cliente_id, orden=session['Shoppingcart'])
+            order = OrdenCliente(factura=factura, cliente_id=cliente_id, orden=session['Shoppingcart'],monto=session['monto'])
             db.session.add(order)
             db.session.commit()
             session.pop('Shoppingcart')
+            session.pop('monto')
             flash('Tu orden ha sido creada', 'success')
-            return redirect(url_for('ordenes', factura=factura))
+            return redirect(url_for('home'))
         except Exception as e:
             print(e)
             flash('Error durante la generación de su orden', 'danger')
