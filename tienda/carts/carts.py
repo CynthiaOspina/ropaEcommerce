@@ -49,7 +49,7 @@ def addcart():
                             if int(key) == int(product_id):
                                 session.modified = True
                                 item['quantity'] = str(int(item['quantity']) + 1)
-                                session['monto'] += 1 ##int(item['quantity'])*float(item['price'])
+                                session['monto'] = 2 ##int(item['quantity'])*float(item['price'])
                                 flash('Se añadió la cantidad de +1 del item seleccionado','success')
                 else:
                     session['Shoppingcart'] = MagerDicts(session['Shoppingcart'], DictItems)
