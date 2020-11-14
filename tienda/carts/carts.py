@@ -91,7 +91,7 @@ def getCart():
 @app.route('/ordenes')
 def getOrdenes():
     ordenes= db.session.query(OrdenCliente).filter_by(cliente_id= current_user.id).all()
-    return ordenes.count()
+    return "ordenes.count()"
 
 @app.route('/vaciarCarrito')
 def empty_cart():
