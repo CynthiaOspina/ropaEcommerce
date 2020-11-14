@@ -22,12 +22,12 @@
                 </thead>
                 <tbody>
                     {% for row in ordenes %}
-                    <td>{{ ordenes.factura }}</td>
-                    <td>{{ ordenes.factura }}</td>
-                    <td>{{ ordenes.factura }}</td>
-                    <td>{{ ordenes.factura }}</td>
-                    <td>{{ ordenes.factura }}</td>
-                    <td>{{ ordenes.factura }}</td>
+                    <td>{{ row.factura }}</td>
+                    <td>{{ row.status }}</td>
+                    <td>{{ row.fecha_creacion }}</td>
+                    <td>{{ row.factura }}</td>
+                    <td><button type="submit" class="btn btn-sm btn-info">Visualizar</button> </td>
+                    <td><button type="submit" class="btn btn-sm btn-danger">Cancelar</button> </td>
 					{% endfor %}
                 </tbody> 
 
