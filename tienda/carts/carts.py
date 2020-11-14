@@ -30,6 +30,7 @@ def addcart():
         colors = request.form.get('colors')
         product = Product.query.filter_by(id=product_id).first()
         if product_id and quantity and colors and request.method == 'POST':
+            session['monto'] = product.price * product.quantity
             DictItems = {
                 product_id : {
                     'name' : product.name,
@@ -49,7 +50,6 @@ def addcart():
                             if int(key) == int(product_id):
                                 session.modified = True
                                 item['quantity'] = str(int(item['quantity']) + 1)
-                                session['monto'] = 2 ##int(item['quantity'])*float(item['price'])
                                 flash('Se añadió la cantidad de +1 del item seleccionado','success')
                 else:
                     session['Shoppingcart'] = MagerDicts(session['Shoppingcart'], DictItems)
