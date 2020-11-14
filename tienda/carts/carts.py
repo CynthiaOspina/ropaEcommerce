@@ -90,10 +90,8 @@ def getCart():
 
 @app.route('/ordenes')
 def getOrdenes():
-    cadena = ""
-    for row in db.session.query(OrdenCliente).filter_by(cliente_id=current_user.id).all():
-        cadena+=row.factura
-    return render_template('products/ordenes.html')
+    ordenes = db.session.query(OrdenCliente).filter_by(cliente_id=current_user.id).all()
+    return render_template('products/ordenes.html', ordenes = ordenes)
 
 @app.route('/vaciarCarrito')
 def empty_cart():
