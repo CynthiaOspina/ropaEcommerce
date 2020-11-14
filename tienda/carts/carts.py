@@ -30,7 +30,6 @@ def addcart():
         colors = request.form.get('colors')
         product = Product.query.filter_by(id=product_id).first()
         if product_id and quantity and colors and request.method == 'POST':
-            session['monto'] = product.price * product.quantity
             DictItems = {
                 product_id : {
                     'name' : product.name,
