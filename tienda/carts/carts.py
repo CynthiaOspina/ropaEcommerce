@@ -87,6 +87,10 @@ def getCart():
         grandtotal = float("%.2f" % (1.06 * subtotal))
     return render_template('products/carts.html', tax = tax, grandtotal = grandtotal, brands=brandsF(), categories=categories())
 
+@app.route('/ordenes')
+def getOrdenes():
+    return "hola"
+
 @app.route('/vaciarCarrito')
 def empty_cart():
     try:
