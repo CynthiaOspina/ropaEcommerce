@@ -44,6 +44,7 @@ def get_order():
     if current_user.is_authenticated:
         cliente_id = current_user.id
         factura = secrets.token_hex(5)
+        session['monto']=0
         try:
             order = OrdenCliente(factura=factura, cliente_id=cliente_id, orden=session['Shoppingcart'],monto=session['monto'])
             db.session.add(order)
