@@ -3,7 +3,8 @@ from app import db, app
 from tienda.products.models import Product
 import json, decimal
 from tienda.admin.rutas import brandsF, categories
-
+from tienda.cliente.models import OrdenCliente
+from flask_login import login_required, current_user, logout_user, login_user
 
 class DecimalEncoder(json.JSONEncoder):
     def default(self, o):
