@@ -93,7 +93,7 @@ def getOrdenes():
     cadena = ""
     for row in db.session.query(OrdenCliente).filter_by(cliente_id=current_user.id).all():
         cadena+=row.factura
-    return cadena
+    return render_template('products/ordenes.html')
 
 @app.route('/vaciarCarrito')
 def empty_cart():
