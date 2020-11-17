@@ -160,20 +160,15 @@
           <div class="products">
             <h3 class="title">Checkout</h3>
 		{% for key, product in ordenes.orden.items() %}
-                        {% set price = product.price|float %}
-
-                        {% set discount = "%0.2f"|format((product.discount/100) * price|float ) %}
-		  	{% set subtotal = product.quantity|int * price|float %}
-
             <div class="item">
               <span class="price">{{ "%0.2f"|format(product.price|float*(100-product.discount|int)/100|float*product.quantity|int) }}</span>
               <p class="item-name">{{product.name}}</p>
-		    <p class="item-name">{{product.price}}</p>
-		    <p class="item-name">{{product.price|float}}</p>
+		    <p class="item-description">P.Unit.: {{product.price}}</p>
 		<p class="item-description">Cantidad: {{product.quantity}}</p>
             </div>
 		{% endfor %}
-            <div class="total">Total<span class="price">{{grandTotal}}</span></div>
+            <div class="total">IGV 18%<span class="price">{{"%0.2f"|format(grandTotal|float*.18)}}</span></div>
+	<div class="total">Total<span class="price">{{grandTotal}}</span></div>
           </div>
           <div class="card-details">
             <h3 class="title">Credit Card Details</h3>
