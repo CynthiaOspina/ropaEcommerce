@@ -112,7 +112,7 @@ def pago(factura):
             subTotal += float(product['price']) * int(product['quantity'])
             subTotal -= descuento
             tax = ("%.2f" % (.18 * float(subTotal)))
-            grandTotal = float("%.2f" % (1.18 * subTotal))
+            grandTotal = ("%.2f" % (1.18 * subTotal))
 
     else:
         return redirect(url_for('customerLogin'))
