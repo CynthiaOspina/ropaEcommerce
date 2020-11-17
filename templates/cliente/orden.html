@@ -58,7 +58,7 @@
             </table>
                 <table class="table table-sm">
                     <tr>
-                        <td><a href="{{ url_for('pago, factura = ordenes.factura') }}" class="btn btn-success"><b>Check out</b></a></td>
+                        <td><a href="{{ url_for('pago', factura = ordenes.factura) }}" class="btn btn-success"><b>Check out</b></a></td>
                         <td><h4>Impuesto: S/. {{ tax }}</h4></td>
                         <td><h4>Total: S/. {{ grandTotal }}</h4></td>
                         <td><a href="#" class="btn btn-danger btn-sm float-rigth mr-4"><b>Obtener PDF</b></a></td>
