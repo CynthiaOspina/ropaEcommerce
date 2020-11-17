@@ -27,7 +27,7 @@
                   	 <td>{{ row.status }}</td>
                   	 <td>{{ row.fecha_creacion }}</td>
                   	 <td>{{ row.monto }}</td>
-                   	 <td><a href="{{ url_for('ordenes', factura=row.factura) }}" class="btn btn-sm btn-info">Visualizar</a> </td>
+                   	 <td><a href="{{ url_for('ordenes1', factura=row.factura) }}" class="btn btn-sm btn-info">Visualizar</a> </td>
                     	<td><button type="submit" class="btn btn-sm btn-danger">Cancelar</button> </td>
 		    </tr>
 		    {% endfor %}
