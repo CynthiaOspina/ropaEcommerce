@@ -167,8 +167,8 @@
 		<p class="item-description">Cantidad: {{product.quantity}}</p>
             </div>
 		{% endfor %}
-            <div class="total">IGV 18%<span class="price">{{"%0.2f"|format(grandTotal*18/100)}}</span></div>
-	<div class="total">Total<span class="price">{{grandTotal}}</span></div>
+            <div class="total">IGV 18%<span class="price">{{"%0.2f"|format(tax)}}</span></div>
+	<div class="total">Total<span class="price">{{"%0.2f"|format(grandTotal)}}</span></div>
           </div>
           <div class="card-details">
             <h3 class="title">Credit Card Details</h3>
