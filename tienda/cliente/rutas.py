@@ -52,7 +52,7 @@ def get_order():
             session.pop('Shoppingcart')
             session.pop('monto')
             flash('Tu orden ha sido creada', 'success')
-            return redirect(url_for('home'))
+            return redirect(url_for('ordenes', factura=factura))
         except Exception as e:
             print(e)
             flash('Error durante la generación de su orden', 'danger')
