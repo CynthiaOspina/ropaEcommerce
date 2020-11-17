@@ -77,3 +77,23 @@ def ordenes(factura):
     else:
         return redirect(url_for('customerLogin'))
     return render_template('cliente/orden.html', factura = factura, tax=tax, subTotal=subTotal, grandTotal=grandTotal, cliente=cliente, ordenes=ordenes)
+
+@app.route('/orden1/<factura>')
+@login_required
+def ordenes1(factura):
+    if current_user.is_authenticated:
+        grandTotal = 0
+        subTotal = 0
+        cliente_id = current_user.id
+        cliente = Registro.query.filter_by(id=cliente_id).first()
+        ordenes = OrdenCliente.query.filter_by(factura = factura).first()
+        for _key, product in ordenes.orden.items():
+            descuento = (product['discount']/100 * float(product['price']))
+            subTotal += float(product['price']) * int(product['quantity'])
+            subTotal -= descuento
+            tax = ("%.2f" % (.18 * float(subTotal)))
+            grandTotal = float("%.2f" % (1.18 * subTotal))
+
+    else:
+        return redirect(url_for('customerLogin'))
+    return render_template('cliente/orden.html', factura = factura, tax=tax, subTotal=subTotal, grandTotal=grandTotal, cliente=cliente, ordenes=ordenes)
