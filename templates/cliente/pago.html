@@ -169,6 +169,7 @@
               <span class="price">{{ "%0.2f"|format((subTotal|float) - discount|float) }}</span>
               <p class="item-name">{{product.name}}</p>
 		    <p class="item-name">{{product.price}}</p>
+		    <p class="item-name">{{product.price|float}}</p>
 		<p class="item-description">Cantidad: {{product.quantity}}</p>
             </div>
 		{% endfor %}
