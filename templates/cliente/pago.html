@@ -166,7 +166,7 @@
 		  	{% set subtotal = product.quantity|int * price|float %}
 
             <div class="item">
-              <span class="price">{{ "%0.2f"|format((subTotal|float) - discount|float) }}</span>
+              <span class="price">{{ "%0.2f"|format(product.price*(1-product.discount)/100*product.quantity) }}</span>
               <p class="item-name">{{product.name}}</p>
 		    <p class="item-name">{{product.price}}</p>
 		    <p class="item-name">{{product.price|float}}</p>
