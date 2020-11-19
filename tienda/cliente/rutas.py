@@ -124,7 +124,7 @@ def pagar(factura):
     if current_user.is_authenticated:
     else:
         return redirect(url_for('customerLogin'))
-    return render_template('cliente/pagado.html', factura = factura, tax=tax, subTotal=subTotal, grandTotal=grandTotal, cliente=cliente, ordenes=ordenes)
+    return render_template('cliente/pagado.html')
 
 
 
