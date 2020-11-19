@@ -127,7 +127,7 @@ def pagar(factura):
             cliente_id = current_user.id
             cliente = Registro.query.filter_by(id=cliente_id).first()
             ordenes = OrdenCliente.query.filter_by(factura = factura).first()
-            ordenes.status = "completado"
+            ordenes.status = "Completado"
             for _key, product in ordenes.orden.items():
                 descuento = (product['discount']/100 * float(product['price']))
                 subTotal += float(product['price']) * int(product['quantity'])
