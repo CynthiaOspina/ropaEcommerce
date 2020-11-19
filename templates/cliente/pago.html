@@ -153,12 +153,12 @@
     <section class="payment-form dark">
       <div class="container">
         <div class="block-heading">
-          <h2>Payment</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+          <h2>Pagito facilito</h2>
+          <p>Entrega a todo lima gratis</p>
         </div>
         <form>
           <div class="products">
-            <h3 class="title">Checkout</h3>
+            <h3 class="title">Pedido</h3>
 		{% for key, product in ordenes.orden.items() %}
             <div class="item">
               <span class="price">{{ "%0.2f"|format(product.price|float*(100-product.discount|int)/100|float*product.quantity|int) }}</span>
@@ -171,23 +171,23 @@
 	<div class="total">Total<span class="price">{{grandTotal}}</span></div>
           </div>
           <div class="card-details">
-            <h3 class="title">Credit Card Details</h3>
+            <h3 class="title">Detalle de la tarjeta de credito</h3>
             <div class="row">
               <div class="form-group col-sm-7">
-                <label for="card-holder">Card Holder</label>
-                <input id="card-holder" type="text" class="form-control" placeholder="Card Holder" aria-label="Card Holder" aria-describedby="basic-addon1">
+                <label for="card-holder">Propietario de la tarjeta</label>
+                <input id="card-holder" type="text" class="form-control" placeholder="Propietario de la tarjeta" aria-label="Card Holder" aria-describedby="basic-addon1">
               </div>
               <div class="form-group col-sm-5">
-                <label for="">Expiration Date</label>
+                <label for="">Fecha de expiracion</label>
                 <div class="input-group expiration-date">
-                  <input type="text" class="form-control" placeholder="MM" aria-label="MM" aria-describedby="basic-addon1">
+                  <input type="text" class="form-control" placeholder="Mes" aria-label="MM" aria-describedby="basic-addon1">
                   <span class="date-separator">/</span>
-                  <input type="text" class="form-control" placeholder="YY" aria-label="YY" aria-describedby="basic-addon1">
+                  <input type="text" class="form-control" placeholder="Año" aria-label="YY" aria-describedby="basic-addon1">
                 </div>
               </div>
               <div class="form-group col-sm-8">
-                <label for="card-number">Card Number</label>
-                <input id="card-number" type="text" class="form-control" placeholder="Card Number" aria-label="Card Holder" aria-describedby="basic-addon1">
+                <label for="card-number">Número de tarjeta</label>
+                <input id="card-number" type="text" class="form-control" placeholder="Número de tarjeta" aria-label="Card Holder" aria-describedby="basic-addon1">
               </div>
               <div class="form-group col-sm-4">
                 <label for="cvc">CVC</label>
