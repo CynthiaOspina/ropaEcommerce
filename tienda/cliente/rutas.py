@@ -1,6 +1,6 @@
 from flask import redirect, render_template, url_for, flash, request, session, current_app
 from app import db, app, photos, search, bcrypt, login_manager
-from .forms import RegistroCliente, LoginClientForm
+from .forms import RegistroCliente, LoginClientForm, datostarjeta
 from .models import Registro, OrdenCliente
 from flask_login import login_required, current_user, logout_user, login_user
 import secrets, os
@@ -117,3 +117,33 @@ def pago(factura):
     else:
         return redirect(url_for('customerLogin'))
     return render_template('cliente/pago.html', factura = factura, tax=tax, subTotal=subTotal, grandTotal=grandTotal, cliente=cliente, ordenes=ordenes)
+
+@app.route('/pagar/<factura>', methods=['POST'])
+@login_required
+def pagar(factura):
+    if current_user.is_authenticated:
+        form = datostarjeta()
+        if form.validate_on_submit():
+            cardholder = form.cardholder.data
+            mes = form.mes.data
+            anno = form.anno.data
+            cardnumber = form.carnumber.data
+            ccv = form.ccv.data
+            grandTotal = 0
+            subTotal = 0
+            cliente_id = current_user.id
+            cliente = Registro.query.filter_by(id=cliente_id).first()
+            ordenes = OrdenCliente.query.filter_by(factura = factura).first()
+            for _key, product in ordenes.orden.items():
+                descuento = (product['discount']/100 * float(product['price']))
+                subTotal += float(product['price']) * int(product['quantity'])
+                subTotal -= descuento
+                tax = ("%.2f" % (.18 * float(subTotal)))
+                grandTotal = ("%.2f" % (1.18 * subTotal))
+
+    else:
+        return redirect(url_for('customerLogin'))
+    return render_template('cliente/pagado.html', factura = factura, tax=tax, subTotal=subTotal, grandTotal=grandTotal, cliente=cliente, ordenes=ordenes)
+
+
+
