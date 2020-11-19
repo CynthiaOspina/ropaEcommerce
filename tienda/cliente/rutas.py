@@ -122,6 +122,7 @@ def pago(factura):
 @login_required
 def pagar(factura):
     if current_user.is_authenticated:
+    
     else:
         return redirect(url_for('customerLogin'))
     return render_template('cliente/pagado.html')
