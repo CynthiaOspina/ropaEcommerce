@@ -122,7 +122,6 @@ def pago(factura):
 @login_required
 def pagar(factura):
     if current_user.is_authenticated:
-        cardholder = request.form.get('cardholder')
     else:
         return redirect(url_for('customerLogin'))
     return render_template('cliente/pagado.html', factura = factura, tax=tax, subTotal=subTotal, grandTotal=grandTotal, cliente=cliente, ordenes=ordenes)
