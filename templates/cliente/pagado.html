@@ -148,6 +148,31 @@
 
 {% include "navbar.html" %}
 
-	<a>HOLA</a>
-
+	<section class="payment-form dark">
+      <div class="container">
+        <div class="block-heading">
+          <h2>Tu pago ha sido realizado con éxito</h2>
+          <p>En breves momentos se enviará el pedido a tu domicilio</p>
+        </div>
+        <form>
+          <div class="products">
+            <h3 class="title">Datos de la transacción</h3>
+            <div class="item">
+              <span class="price">$200</span>
+              <p class="item-name">Product 1</p>
+              <p class="item-description">Lorem ipsum dolor sit amet</p>
+            </div>
+            <div class="item">
+              <span class="price">$120</span>
+              <p class="item-name">Product 2</p>
+              <p class="item-description">Lorem ipsum dolor sit amet</p>
+            </div>
+            <div class="total">Total<span class="price">$320</span></div>
+          </div>
+		 <div class="form-group col-sm-12">
+			<button type="button" class="btn btn-primary btn-block">Inicio</button>
+		  </div>
+        </form>
+      </div>
+    </section>
 {% endblock content %}
