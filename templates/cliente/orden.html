@@ -58,7 +58,7 @@
             </table>
                 <table class="table table-sm">
                     <tr>
-                        {% if ordenes.status = "Pendiente" %}
+                        {% if ordenes.status == "Pendiente" %}
                         <td><a href="{{ url_for('pago', factura = ordenes.factura) }}" class="btn btn-success"><b>Check out</b></a></td>
                         {% endif %}
                         <td><h4>Impuesto: S/. {{ tax }}</h4></td>
