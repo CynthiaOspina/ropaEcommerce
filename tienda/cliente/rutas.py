@@ -118,7 +118,7 @@ def pago(factura):
         return redirect(url_for('customerLogin'))
     return render_template('cliente/pago.html', factura = factura, tax=tax, subTotal=subTotal, grandTotal=grandTotal, cliente=cliente, ordenes=ordenes)
 
-@app.route('/pagar/<factura>', methods=['POST'])
+@app.route('/pagar/<factura>', methods=['GET','POST'])
 @login_required
 def pagar(factura):
     if current_user.is_authenticated:
