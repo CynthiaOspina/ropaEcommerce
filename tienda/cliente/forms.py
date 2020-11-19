@@ -30,4 +30,11 @@ class RegistroCliente(FlaskForm):
 class LoginClientForm(FlaskForm):
     email = StringField('Email: ', [validators.DataRequired()])
     password = PasswordField('Clave: ', [validators.DataRequired()])
+ 
+class datostarjeta(FlaskForm):
+    cardholder = StringField('cardholder', [validators.DataRequired()])
+    mes = StringField('mes', [validators.DataRequired()])
+    anno = StringField('anno', [validators.DataRequired()])
+    cardnumber = StringField('carnumber', [validators.DataRequired()])
+    ccv = StringField('ccv', [validators.DataRequired()])
 
