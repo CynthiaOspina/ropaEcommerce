@@ -122,13 +122,6 @@ def pago(factura):
 @login_required
 def pagar(factura):
     if current_user.is_authenticated:
-        form = datostarjeta()
-        if form.validate_on_submit():
-            cardholder = form.cardholder.data
-            mes = form.mes.data
-            anno = form.anno.data
-            cardnumber = form.carnumber.data
-            ccv = form.ccv.data
             grandTotal = 0
             subTotal = 0
             cliente_id = current_user.id
