@@ -1,6 +1,6 @@
 from flask import redirect, render_template, url_for, flash, request, session, current_app
 from app import db, app, photos, search, bcrypt, login_manager
-from .forms import RegistroCliente, LoginClientForm, DatosTarjeta
+from .forms import RegistroCliente, LoginClientForm
 from .models import Registro, OrdenCliente
 from flask_login import login_required, current_user, logout_user, login_user
 import secrets, os
