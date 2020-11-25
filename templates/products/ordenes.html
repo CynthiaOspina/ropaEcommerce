@@ -16,7 +16,6 @@
                     <th>Factura</th>
                     <th>Status</th>
                     <th>Fecha de creacion</th>
-                    <th>Monto</th>
                     <th>Visualizar</th>
                     <th>Cancelar</th>
                 </thead>
@@ -26,7 +25,6 @@
                    	 <td>{{ row.factura }}</td>
                   	 <td>{{ row.status }}</td>
                   	 <td>{{ row.fecha_creacion }}</td>
-                  	 <td>{{ row.monto }}</td>
                    	 <td><a href="{{ url_for('ordenes1', factura=row.factura) }}" class="btn btn-sm btn-info">Visualizar</a> </td>
 			 {% if row.status == "Pendiente" %}   
                     	 <td><button type="submit" class="btn btn-sm btn-danger">Cancelar</button> </td>
